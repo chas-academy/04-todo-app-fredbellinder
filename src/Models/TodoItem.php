@@ -6,11 +6,9 @@ class TodoItem extends Model
 {
     const TABLENAME = 'todos'; // This is used by the abstract model, don't touch
 
-    // public static function createTodo($title)
-    // {
-    //     // TODO: Implement me!
-    //     // Create a new todo
-    // }
+    public static function createTodo($title)
+    {
+    }
 
     // // public static function updateTodo($todoId, $title, $completed = null)
     // // {
@@ -18,11 +16,13 @@ class TodoItem extends Model
     // //     // Update a specific todo
     // // }
 
-    // public static function deleteTodo($todoId)
-    // {
-    //     // TODO: Implement me!
-    //     // Delete a specific todo
-    // }
+    public static function deleteTodo($todoId)
+    {
+        $query = "DELETE FROM " . static::TABLENAME . " WHERE id ='$todoId'";
+        self::$db->query($query);
+        $result = self::$db->execute($query);
+        return $result;
+    }
     
     // (Optional bonus methods below)
     // public static function toggleTodos($completed)
@@ -36,5 +36,4 @@ class TodoItem extends Model
     //     // TODO: Implement me!
     //     // This is to delete all the completed todos from the database
     // }
-
 }
