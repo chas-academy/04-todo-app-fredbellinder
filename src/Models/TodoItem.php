@@ -14,11 +14,18 @@ class TodoItem extends Model
         return $result;
     }
 
-    // // public static function updateTodo($todoId, $title, $completed = null)
-    // // {
-    // //     // TODO: Implement me!
-    // //     // Update a specific todo
-    // // }
+    public static function updateTodo($todoId, $title, $completed = null)
+    {
+        $query = "UPDATE " . static::TABLENAME . " SET title = :title, completed = :completed, updated = " . CURRENT_TIMESTAMP . " WHERE id = :id";
+
+        self::$db->query($query);
+        self::$db->bind(':id', $todoId);
+        self::$db->bind(':title', $title);
+        self::$db->bind(':completed', $completed);
+        $result = self::$db->execute();
+        return $result;
+    }
+
 
     public static function deleteTodo($todoId)
     {
