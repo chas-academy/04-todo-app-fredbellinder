@@ -15,9 +15,13 @@ class TodoController extends Controller
     public function add()
     {
         $body = filter_body();
-        $result = TodoItem::createTodo($body['title']);
+        if (trim($body['title']) != null) {
+            $result = TodoItem::createTodo($body['title']);
+        }
 
         if ($result) {
+            $this->redirect('/');
+        } else { // result KOMMER att vara false om titel-inputt är null
             $this->redirect('/');
         }
     }
@@ -96,15 +100,21 @@ class TodoController extends Controller
         $completed;
         if (isset($body['inactive'])) {
             $completed = 'true';
-            $todos = TodoItem::showOnly($completed);
+            $todos = TodoItem::showOnly($completed, $completed);
         } elseif (isset($body['active'])) {
             $completed = 'false';
-            $todos = TodoItem::showOnly($completed);
+            $todos = TodoItem::showOnly($completed, $completed);
         } elseif (isset($body['all'])) {
-            $todos = TodoItem::findall();
+            $completed1 = 'false';
+            $completed2 = 'true';
+            $todos = TodoItem::showOnly($completed1, $completed2);
         }
         
-        // $this->redirect('/');
+        // if ($todos) {
+        //     $this->redirect('/');
+        // } else {
+        //     $this->redirect('/');
+        // }
         return $this->view('index', ['todos' => $todos]);
-    
+    }
 }

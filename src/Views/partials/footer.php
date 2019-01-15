@@ -15,7 +15,7 @@
             }
         )
 ) != 1 ? "s" : "" ?> left</span>
-    <form id="show-only" method="POST" action="/todos/show-only" style="display: inline-block">
+    <form id="show-only" method="POST" action="/show-only" style="display: inline-block">
         <button class="clear-completed" name="all" style="display: inline-block">
             All
         </button>

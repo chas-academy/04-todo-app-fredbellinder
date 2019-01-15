@@ -55,11 +55,12 @@ class TodoItem extends Model
         return $result;
     }
 
-    public static function showOnly($completed)
+    public static function showOnly($completed1, $completed2)
     {
-        $query = "SELECT * FROM " . static::TABLENAME . " WHERE completed = :completed ORDER BY created DESC";
+        $query = "SELECT * FROM " . static::TABLENAME . " WHERE completed = :completed1 OR completed = :completed2 ORDER BY created DESC";
         self::$db->query($query);
-        self::$db->bind(':completed', $completed);
+        self::$db->bind(':completed1', $completed1);
+        self::$db->bind(':completed2', $completed2);
         $results = self::$db->resultset();
         if (!empty($results)) {
             return $results;
