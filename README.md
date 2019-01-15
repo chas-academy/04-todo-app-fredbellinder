@@ -1,5 +1,5 @@
 # 04-todo-app
-A todo app in PHP
+A todo app in PHP.
 
 # Quickstart (vagrant)
 0. Download and install [Vagrant](https://www.vagrantup.com/) and [Virtualbox](https://www.virtualbox.org/wiki/Downloads) for your operating system.
