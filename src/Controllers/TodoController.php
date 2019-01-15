@@ -57,6 +57,28 @@ class TodoController extends Controller
      */
     public function toggle()
     {
+        $body = TodoItem::findAll();
+
+        $toggleToThis = '';
+        $falseCount = count(
+            array_filter(
+                $body,
+                function ($body) {
+                    return $body['completed'] === 'false';
+                }
+            )
+        );
+        if ($falseCount == 0) {
+            $toggleToThis = 'false';
+        } else {
+            $toggleToThis = 'true';
+        }
+        $result = TodoItem::toggleTodos($toggleToThis);
+        if ($result) {
+            $this->redirect('/');
+        } else {
+            $this->redirect('/');
+        }
         // (OPTIONAL) TODO: This action should toggle all todos to completed, or not completed.
     }
 

@@ -8,8 +8,9 @@ class TodoItem extends Model
 
     public static function createTodo($title)
     {
-        $query = "INSERT INTO " . static::TABLENAME . "(title, created) " . "VALUES ('$title', " . CURRENT_TIMESTAMP . ")";
+        $query = "INSERT INTO " . static::TABLENAME . "(title, created) " . "VALUES (:title, " . CURRENT_TIMESTAMP . ")";
         self::$db->query($query);
+        self::$db->bind(':title', $title);
         $result = self::$db->execute($query);
         return $result;
     }
@@ -36,11 +37,14 @@ class TodoItem extends Model
     }
     
     // (Optional bonus methods below)
-    // public static function toggleTodos($completed)
-    // {
-    //     // TODO: Implement me!
-    //     // This is to toggle all todos either as completed or not completed
-    // }
+    public static function toggleTodos($toggled)
+    {
+        $query = "UPDATE " . static::TABLENAME ." SET completed = :completed";
+        self::$db->query($query);
+        self::$db->bind(':completed', $toggled);
+        $result = self::$db->execute();
+        return $result;
+    }
 
     // public static function clearCompletedTodos()
     // {
