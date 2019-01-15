@@ -89,4 +89,22 @@ class TodoController extends Controller
             $this->redirect('/');
         }
     }
+
+    public function show()
+    {
+        $body = filter_body();
+        $completed;
+        if (isset($body['inactive'])) {
+            $completed = 'true';
+            $todos = TodoItem::showOnly($completed);
+        } elseif (isset($body['active'])) {
+            $completed = 'false';
+            $todos = TodoItem::showOnly($completed);
+        } elseif (isset($body['all'])) {
+            $todos = TodoItem::findall();
+        }
+        
+        // $this->redirect('/');
+        return $this->view('index', ['todos' => $todos]);
+    
 }

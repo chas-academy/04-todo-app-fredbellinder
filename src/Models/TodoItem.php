@@ -54,4 +54,17 @@ class TodoItem extends Model
         $result = self::$db->execute();
         return $result;
     }
+
+    public static function showOnly($completed)
+    {
+        $query = "SELECT * FROM " . static::TABLENAME . " WHERE completed = :completed ORDER BY created DESC";
+        self::$db->query($query);
+        self::$db->bind(':completed', $completed);
+        $results = self::$db->resultset();
+        if (!empty($results)) {
+            return $results;
+        } else {
+            return [];
+        }
+    }
 }
