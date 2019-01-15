@@ -1,6 +1,35 @@
 <footer class="footer">
-    <span class="todo-count"><?= count(array_filter($todos, function($todo) { return $todo['completed'] === "false"; })) ?> item<?= "".count($todos) !== 1 ? "s" : "" ?> left</span>
-    <button class="clear-completed">Clear completed</button>
+<span class="todo-count">
+    <?= count(
+        array_filter(
+            $todos,
+            function ($todo) {
+                return $todo['completed'] === "false";
+            }
+        )
+    ) ?> item<?= "" . count(
+        array_filter(
+            $todos,
+            function ($todo) {
+                return $todo['completed'] === "false";
+            }
+        )
+) != 1 ? "s" : "" ?> left</span>
+    <form id="show-only" method="POST" action="/todos/show-only" style="display: inline-block">
+        <button class="clear-completed" name="all" style="display: inline-block">
+            All
+        </button>
+        <button class="clear-completed" name="active" style="display: inline-block" value="false">
+            Active
+        </button>
+        <button class="clear-completed" name="inactive" style="display: inline-block" value="true">
+            Inactive
+        </button>
+    </form>
+    <form method="post" action="/todos/clear-completed" style="display: inline-block">
+        <button class="clear-completed" style="display: inline-block">Clear completed</button>
+        
+    </form>
 </footer>
 
 </main>

@@ -30,8 +30,9 @@ class TodoItem extends Model
 
     public static function deleteTodo($todoId)
     {
-        $query = "DELETE FROM " . static::TABLENAME . " WHERE id ='$todoId'";
+        $query = "DELETE FROM " . static::TABLENAME . " WHERE id = :id";
         self::$db->query($query);
+        self::$db->bind(':id', $todoId);
         $result = self::$db->execute($query);
         return $result;
     }
