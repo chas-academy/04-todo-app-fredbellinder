@@ -21,7 +21,7 @@ class TodoController extends Controller
 
         if ($result) {
             $this->redirect('/');
-        } else { // result KOMMER att vara false om titel-inputt är null
+        } else {
             $this->redirect('/');
         }
     }
@@ -36,13 +36,6 @@ class TodoController extends Controller
         if ($result) {
             $this->redirect('/');
         }
-        // TODO: Implement me!
-        // This action should update a specific todo item in the todos table using the TodoItem::updateTodo method.
-        // Try and figure out what parameters you need to pass to the updateTodo-method in the TodoItem model.
-
-        // if there's a result
-          // use the redirect method to send the user back to the list of todos $this->redirect('/');
-        // otherwise, throw an exception or show an error message
     }
 
     public function delete($urlParams)
@@ -53,12 +46,6 @@ class TodoController extends Controller
         }
     }
 
-    /**
-     * OPTIONAL Bonus round!
-     *
-     * The two methods below are optional, feel free to try and complete them
-     * if you're aiming for a higher grade.
-     */
     public function toggle()
     {
         $body = TodoItem::findAll();
@@ -109,12 +96,6 @@ class TodoController extends Controller
             $completed2 = 'true';
             $todos = TodoItem::showOnly($completed1, $completed2);
         }
-        
-        // if ($todos) {
-        //     $this->redirect('/');
-        // } else {
-        //     $this->redirect('/');
-        // }
         return $this->view('index', ['todos' => $todos]);
     }
 }

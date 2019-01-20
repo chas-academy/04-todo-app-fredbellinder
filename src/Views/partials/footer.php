@@ -16,17 +16,17 @@
         )
 ) != 1 ? "s" : "" ?> left</span>
     <form id="show-only" method="POST" action="/show-only" style="display: inline-block">
-        <button class="clear-completed" name="all" style="display: inline-block">
+        <button class="show-only" name="all" style="display: inline-block">
             All
         </button>
-        <button class="clear-completed" name="active" style="display: inline-block" value="false">
+        <button class="show-only" name="active" style="display: inline-block" value="false">
             Active
         </button>
-        <button class="clear-completed" name="inactive" style="display: inline-block" value="true">
+        <button class="show-only" name="inactive" style="display: inline-block" value="true">
             Inactive
         </button>
     </form>
-    <form method="post" action="/todos/clear-completed" style="display: inline-block">
+    <form method="post" class="clear-completed" action="/todos/clear-completed" style="display: inline-block">
         <button class="clear-completed" style="display: inline-block">Clear completed</button>
         
     </form>

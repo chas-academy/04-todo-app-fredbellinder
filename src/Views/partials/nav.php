@@ -1,5 +1,5 @@
 <header class="header">
-    <h1>todos</h1>
+    <h1>To-Do</h1>
     <form id="create-todo" method="post" action="todos">
       <input name="title" class="new-todo" placeholder="What needs to be done?" autofocus>
     </form>

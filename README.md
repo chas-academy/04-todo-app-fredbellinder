@@ -100,6 +100,7 @@ CREATE TABLE `todos` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(100) NOT NULL DEFAULT '',
   `created` datetime NOT NULL,
+  `updated` datetime,
   `completed` enum('false', 'true') NOT NULL DEFAULT 'false',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -117,4 +118,4 @@ Now that you've successfully created the database and the todos table with some 
     define('DB_USER', '226706_hs24585');
     define('DB_PASS', 'passwordgoeshere');
     define('DB_NAME', '226706-todo-app-db');
-If you've folloed the steps carefully you should now be able to see the working app live at your domain http://todo.firstnamelastname.chas.academy
+
