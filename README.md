@@ -1,4 +1,4 @@
-[See the result here:](todo.bellinder.se)
+[See the result here:](https://todo.bellinder.se)
 This is a Todo-list in the form of a web-application.
 The Point of this is to get an understanding of th MVC concept in PHP and also get som practise in writing PHP code.
 How users can get started with the project
